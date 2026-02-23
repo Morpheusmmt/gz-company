@@ -72,29 +72,29 @@
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-color: rgba(212, 165, 116, 0.2);
-  color: #D4A574;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .footer-social-link:hover {
-  background-color: #D4A574;
-  color: #4A3728;
+  background-color: #ffffff;
+  color: #000000;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(212, 165, 116, 0.4);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
 
 .footer-copyright {
   width: 100%;
   text-align: center;
-  border-top: 1px solid rgba(212, 165, 116, 0.3);
+  border-top: 1px solid #333333;
   padding-top: 20px;
   margin-top: 10px;
 }
 
 .footer-copyright p {
-  color: #D4A574;
+  color: #888888;
   font-size: 0.9rem;
   margin: 0;
 }

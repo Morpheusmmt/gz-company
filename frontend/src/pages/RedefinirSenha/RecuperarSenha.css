@@ -5,7 +5,7 @@
           gap: 8px;
           background: none;
           border: none;
-          color: var(--cor-link);
+          color: #ffffff;
           font-size: 14px;
           font-weight: 500;
           cursor: pointer;
@@ -15,7 +15,7 @@
         }
 
         .back-button:hover {
-          color: var(--cor-destaque);
+          color: #888888;
           transform: translateX(-4px);
         }
 

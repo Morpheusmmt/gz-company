@@ -73,12 +73,12 @@
 }
 
 .navbar_links a:hover {
-  color: #D4A574;
+  color: #ffffff;
 }
 
 .navbar_button {
-  background: #D4A574;
-  color: #1a1a2e;                     
+  background: #ffffff;
+  color: #000000;                     
   border: none;                     
   border-radius: 10px;             
   padding: 8px 20px;
@@ -89,7 +89,7 @@
 }
 
 .navbar_button:hover {
-  background-color: #E8C4A0;
+  background-color: #e5e5e5;
   transform: translateY(-2px);
 }
 

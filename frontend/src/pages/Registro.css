@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--cor-gradiente-fundo); 
+  background: #000000; 
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -11,9 +11,9 @@
 
 /* Card principal */
 .register-card {
-  background: var(--cor-fundo-card);
+  background: #111111;
   border-radius: 20px; 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05); 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px #333333; 
   width: 100%;
   max-width: 420px;
   margin: 40px 0; 
@@ -29,12 +29,12 @@
 .register-header h1 {
   font-size: 32px;
   font-weight: 700;
-  color: var(--cor-link);
+  color: #ffffff;
   margin: 0 0 8px 0;
 }
 
 .register-header p {
-  color: var(--cor-texto-secundario);
+  color: #888888;
   margin: 0;
   font-size: 16px;
 }
@@ -62,9 +62,9 @@
 
 /* Mensagem de erro */
 .error-message {
-  background: var(--cor-erro-fundo);
-  border: 1px solid var(--cor-erro-borda);
-  color: var(--cor-erro-texto);
+  background: #450a0a;
+  border: 1px solid #ef4444;
+  color: #ef4444;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -73,9 +73,9 @@
 
 /* Mensagem de sucesso */
 .success-message {
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  color: #059669;
+  background: #064e3b;
+  border: 1px solid #10b981;
+  color: #10b981;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -97,7 +97,7 @@
 .form-group label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--cor-label);
+  color: #ffffff;
 }
 
 .input-wrapper {
@@ -109,7 +109,7 @@
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: #D4A574;
+  color: #888888;
   pointer-events: none;
   z-index: 1;
 }
@@ -120,12 +120,12 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #D4A574;
+  color: #888888;
   z-index: 2;
 }
 
 .toggle-password:hover {
-  color: var(--cor-destaque-hover);
+  color: #ffffff;
 }
 
 /* Estilos específicos para cada tipo de input */
@@ -133,38 +133,38 @@
 .input-wrapper input[type="text"] {
   width: 100%;
   padding: 14px 16px 14px 48px;
-  border: 2px solid var(--cor-borda-input);
+  border: 1px solid #333333;
   border-radius: 10px;
   font-size: 16px;
   transition: all 0.2s;
   box-sizing: border-box;
-  background: var(--cor-fundo-secundario);
-  color: var(--cor-texto-principal);
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 .input-wrapper input[type="password"] {
   width: 100%;
   padding: 14px 48px 14px 48px;
-  border: 2px solid var(--cor-borda-input);
+  border: 1px solid #333333;
   border-radius: 10px;
   font-size: 16px;
   transition: all 0.2s;
   box-sizing: border-box;
-  background: var(--cor-fundo-secundario);
-  color: var(--cor-texto-principal);
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: var(--cor-destaque);
-  box-shadow: 0 0 0 4px var(--cor-destaque-foco-sombra);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
 .submit-button {
   width: 100%;
   padding: 16px;
-  background: var(--cor-destaque);
-  color: #1a1a2e;
+  background: #ffffff;
+  color: #000000;
   border: none;
   border-radius: 10px; 
   font-size: 18px; 
@@ -172,13 +172,13 @@
   cursor: pointer;
   transition: all 0.3s;
   margin-top: 8px;
-  box-shadow: 0 4px 15px var(--cor-destaque-foco-sombra);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
 .submit-button:hover:not(:disabled) {
-  background: var(--cor-destaque-hover);
+  background: #e5e5e5;
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px var(--cor-destaque-foco-sombra);
+  box-shadow: 0 8px 18px rgba(255, 255, 255, 0.15);
 }
 
 .submit-button:disabled {
@@ -189,12 +189,12 @@
 .register-link {
   text-align: center;
   margin-top: 24px;
-  color: var(--cor-texto-secundario);
+  color: #888888;
   font-size: 14px;
 }
 
 .register-link a {
-  color: var(--cor-link);
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;

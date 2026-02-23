@@ -1,14 +1,13 @@
 
-
 .menu-container {
   min-height: 100vh;
-  background: var(--cor-gradiente-fundo);
+  background: #000000;
   padding: 40px 20px;
 }
 
 .menu-header {
   text-align: center;
-  color: var(--cor-texto-principal);
+  color: #ffffff;
   margin-bottom: 50px;
 }
 
@@ -21,6 +20,7 @@
 .menu-header p {
   font-size: 1.1rem;
   opacity: 0.9;
+  color: #888888;
 }
 
 .menu-cards {
@@ -33,47 +33,49 @@
 }
 
 .menu-card {
-  background: var(--cor-fundo-card);
+  background: #111111;
   border-radius: 15px;
   padding: 40px 30px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333333;
 }
 
 .menu-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: #ffffff;
 }
 
 .menu-card svg {
-  color: var(--cor-icones);
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
 .menu-card h3 {
-  color: var(--cor-texto-principal);
+  color: #ffffff;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
 .menu-card p {
-  color: var(--cor-texto-secundario);
+  color: #888888;
   font-size: 0.95rem;
 }
 
 .user-info {
   max-width: 600px;
   margin: 0 auto;
-  background: var(--cor-fundo-card);
+  background: #111111;
   border-radius: 15px;
   padding: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid #3d3d5c;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333333;
 }
 
 .user-details {
@@ -83,17 +85,17 @@
 }
 
 .user-details svg {
-  color: var(--cor-destaque);
+  color: #ffffff;
 }
 
 .user-name {
   font-weight: 600;
-  color: var(--cor-texto-principal);
+  color: #ffffff;
   margin-bottom: 5px;
 }
 
 .user-email {
-  color: var(--cor-texto-secundario);
+  color: #888888;
   font-size: 0.9rem;
 }
 
@@ -124,12 +126,12 @@
   }
 
   .menu-card h3 {
-    color: var(--cor-texto-principal);
+    color: #ffffff;
     font-size: 1.5rem;
     margin-bottom: 10px;
   }
   .menu-card p {
-    color: var(--cor-texto-secundario);
+    color: #888888;
     font-size: 0.95rem;
   }
 

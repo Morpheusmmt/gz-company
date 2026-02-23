@@ -3,29 +3,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--cor-gradiente-fundo);
+  background: #000000;
   padding: 20px;
 }
 
 .rs-card {
-  background: var(--cor-fundo-card);
+  background: #111111;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   width: 100%;
   max-width: 420px;
   padding: 40px;
   text-align: center;
+  border: 1px solid #333333;
 }
 
 .rs-card h2 {
   font-size: 32px;
   font-weight: 700;
-  color: var(--cor-link);
+  color: #ffffff;
   margin: 0 0 8px 0;
 }
 
 .rs-card p {
-  color: var(--cor-texto-secundario);
+  color: #888888;
   margin: 0 0 20px 0;
   font-size: 16px;
 }
@@ -33,40 +34,27 @@
 .rs-input {
   width: 100%;
   padding: 14px 16px;
-  border: 2px solid var(--cor-borda-input);
+  border: 1px solid #333333;
   border-radius: 10px;
   font-size: 16px;
   transition: all 0.2s;
   box-sizing: border-box;
-  background: var(--cor-fundo-card);
-  color: var(--cor-texto-principal);
+  background: #1a1a1a;
+  color: #ffffff;
   margin-bottom: 10px;
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
 .rs-input:focus {
   outline: none;
-  border-color: var(--cor-destaque);
-  box-shadow: 0 0 0 4px var(--cor-destaque-foco-sombra);
-}
-
-@media (prefers-color-scheme: dark) {
-  .rs-input {
-    background: #1a1a1a;
-    color: #ffffff;
-    border-color: #404040;
-  }
-
-  .rs-input:focus {
-    border-color: var(--cor-destaque);
-    background: #2a2a2a;
-  }
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
 .erro {
-  background: var(--cor-erro-fundo);
-  border: 1px solid var(--cor-erro-borda);
-  color: var(--cor-erro-texto);
+  background: #450a0a;
+  border: 1px solid #ef4444;
+  color: #ef4444;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 16px;
@@ -76,8 +64,8 @@
 .botao-confirmar {
   width: 100%;
   padding: 16px;
-  background: var(--cor-destaque);
-  color: white;
+  background: #ffffff;
+  color: #000000;
   border: none;
   border-radius: 10px;
   font-size: 18px;
@@ -85,13 +73,13 @@
   cursor: pointer;
   transition: all 0.3s;
   margin-top: 8px;
-  box-shadow: 0 4px 15px var(--cor-destaque-foco-sombra);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
 .botao-confirmar:hover {
-  background: var(--cor-destaque-hover);
+  background: #e5e5e5;
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px var(--cor-destaque-foco-sombra);
+  box-shadow: 0 8px 18px rgba(255, 255, 255, 0.2);
 }
 
 .botao-confirmar:disabled {

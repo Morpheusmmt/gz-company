@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--cor-gradiente-fundo); 
+  background: #000000; 
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -11,9 +11,9 @@
 
 /* Card principal */
 .login-card {
-  background: var(--cor-fundo-card);
+  background: #111111;
   border-radius: 20px; 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05); 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px #333333; 
   width: 100%;
   max-width: 420px;
   padding: 40px; 
@@ -28,12 +28,12 @@
 .login-header h1 {
   font-size: 32px;
   font-weight: 700;
-  color: var(--cor-link);
+  color: #ffffff;
   margin: 0 0 8px 0;
 }
 
 .login-header p {
-  color: var(--cor-texto-secundario);
+  color: #888888;
   margin: 0;
   font-size: 16px;
 }
@@ -61,9 +61,9 @@
 
 /* Mensagem de erro*/
 .error-message {
-  background: var(--cor-erro-fundo);
-  border: 1px solid var(--cor-erro-borda);
-  color: var(--cor-erro-texto);
+  background: #450a0a;
+  border: 1px solid #ef4444;
+  color: #ef4444;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -85,7 +85,7 @@
 .form-group label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--cor-label);
+  color: #ffffff;
 }
 
 .input-wrapper {
@@ -121,31 +121,31 @@
 .input-wrapper input[type="text"] {
   width: 100%;
   padding: 14px 16px 14px 48px; 
-  border: 2px solid var(--cor-borda-input);
+  border: 1px solid #333333;
   border-radius: 10px;
   font-size: 16px;
   transition: all 0.2s;
   box-sizing: border-box;
-  background: var(--cor-fundo-secundario);
-  color: var(--cor-texto-principal);
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 .input-wrapper input[type="password"] {
   width: 100%;
   padding: 14px 48px 14px 48px; 
-  border: 2px solid var(--cor-borda-input);
+  border: 1px solid #333333;
   border-radius: 10px;
   font-size: 16px;
   transition: all 0.2s;
   box-sizing: border-box;
-  background: var(--cor-fundo-secundario);
-  color: var(--cor-texto-principal);
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: var(--cor-destaque);
-  box-shadow: 0 0 0 4px var(--cor-destaque-foco-sombra);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
 .form-footer {
@@ -159,12 +159,12 @@
 
 .remember-me {
   font-size: 14px;
-  color: var(--cor-texto-secundario);
+  color: #888888;
 }
 
 .forgot-password {
   font-size: 14px;
-  color: var(--cor-link);
+  color: #ffffff;
 }
 
 .submit-button {
@@ -196,12 +196,12 @@
 .register-link {
   text-align: center;
   margin-top: 24px;
-  color: var(--cor-texto-secundario);
+  color: #888888;
   font-size: 14px;
 }
 
 .register-link a {
-  color: var(--cor-link);
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
