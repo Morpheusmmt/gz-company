@@ -184,11 +184,11 @@ export default function ConsultoriasList({ userOnly = false }) {
     const descriptions = {
       pendente: "Sua solicitação foi recebida e está aguardando análise da equipe.",
       em_analise: "Nossa equipe está analisando sua solicitação e entrará em contato em breve.",
-      confirmada: "Sua consultoria foi aprovada e será iniciada em breve.",
-      concluida: "Sua consultoria foi concluída. Confira os resultados abaixo.",
+      confirmada: "Seu projeto foi aprovado e será iniciado em breve.",
+      concluida: "Seu projeto foi concluído. Confira os resultados abaixo.",
       cancelada: "Esta solicitação foi cancelada.",
     };
-    return descriptions[status] || "Status da consultoria";
+    return descriptions[status] || "Status da solicitação";
   };
 
   const formatDate = (date) => {
@@ -214,8 +214,8 @@ export default function ConsultoriasList({ userOnly = false }) {
       <div className="consultorias-container">
         <div className="consultorias-card">
           <div className="consultorias-header">
-            <h1>Minhas Consultorias</h1>
-            <p>Acompanhe o status das suas solicitações de consultoria</p>
+            <h1>Minhas Solicitações</h1>
+            <p>Acompanhe o status das suas solicitações de orçamento</p>
           </div>
 
           <button
@@ -454,7 +454,7 @@ export default function ConsultoriasList({ userOnly = false }) {
     <div className="consultorias-container">
       <div className="consultorias-card">
         <div className="consultorias-header">
-          <h1>Solicitações de Consultoria</h1>
+          <h1>Solicitações de Orçamento</h1>
           <p>Gerencie e acompanhe as solicitações recebidas</p>
         </div>
 

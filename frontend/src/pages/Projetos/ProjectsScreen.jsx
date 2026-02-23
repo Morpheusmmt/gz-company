@@ -193,7 +193,7 @@ export default function ProjectsScreen() {
         <div className="projetos-header">
           <div className="projetos-header-info">
             <h1>Gestão de Projetos</h1>
-            <p>Gerencie seus projetos de P&D</p>
+            <p>Gerencie seus projetos</p>
           </div>
           <div className="projetos-header-actions">
             <button className="btn-novo-projeto" onClick={() => setShowNovoProjetoModal(true)}>
@@ -424,7 +424,7 @@ export default function ProjectsScreen() {
           <div className="empty-state">
             <FolderOpen size={64} className="empty-icon" />
             <h3>Nenhum projeto encontrado</h3>
-            <p>Comece criando um novo projeto de P&D</p>
+            <p>Comece criando um novo projeto</p>
             <button className="btn-primary" onClick={() => setShowNovoProjetoModal(true)}>
               <Plus size={20} />
               Criar Projeto

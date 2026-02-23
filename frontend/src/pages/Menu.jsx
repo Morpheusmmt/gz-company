@@ -32,8 +32,8 @@ export default function Menu() {
     {
       id: "consultoria",
       icon: Scroll,
-      title: "Solicitação de consultoria",
-      description: "Solicite a nossa consultoria",
+      title: "Solicitar Orçamento",
+      description: "Solicite um orçamento para seu projeto",
       path: "/menu/form-consultoria",
       permission: "consultations:create"
     },
@@ -41,15 +41,15 @@ export default function Menu() {
       id: "consultorias-recebidas",
       icon: FileText,
       title: "Solicitações Recebidas",
-      description: "Gerencie as solicitações de consultoria",
+      description: "Gerencie as solicitações de orçamento",
       path: "/menu/consultorias",
       permission: "consultations:view" 
     },
     {
       id: "minhas-consultorias",
       icon: FileText,
-      title: "Minhas Consultorias",
-      description: "Veja suas solicitações de consultoria",
+      title: "Minhas Solicitações",
+      description: "Acompanhe suas solicitações de orçamento",
       path: "/menu/minhas-consultorias",
       permission: "consultations:view_own" 
     },
@@ -65,7 +65,7 @@ export default function Menu() {
       id: "projetos",
       icon: FileText,
       title: "Projetos",
-      description: "Gerencie seus projetos de P&D",
+      description: "Gerencie seus projetos",
       path: "/menu/projetos",
       permission: "projects:view_own" 
     }

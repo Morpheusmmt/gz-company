@@ -133,11 +133,11 @@ export default function FormConsultoria() {
         </button>
 
         <form className="fc-form" onSubmit={handleSubmit}>
-          <ScrollText size={40} color="#D4A574" />
-          <h2>Solicitação de Consultoria</h2>
+          <ScrollText size={40} color="#ffffff" />
+          <h2>Solicitar Orçamento</h2>
           <p>
-            Preencha os campos abaixo com as suas credenciais para solicitar e
-            prosseguir com a nossa consultoria
+            Preencha os campos abaixo para solicitar um orçamento 
+            para o seu projeto
           </p>
 
           {error && (
@@ -195,7 +195,7 @@ export default function FormConsultoria() {
               name="descricao"
               value={formData.descricao}
               onChange={handleChange}
-              placeholder="Escreva a sua solicitação para a gente (mínimo 50 caracteres)"
+              placeholder="Descreva seu projeto e o que você precisa (mínimo 50 caracteres)"
               rows={6}
               minLength={50}
               required
