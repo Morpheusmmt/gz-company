@@ -1,357 +1,122 @@
-# 🚀 GZ Company - Sistema de Consultoria em Tecnologia
+# GZ Company
 
-<p align="center">
-  <img src="frontend/public/logo.png" alt="GZ Company Logo" width="200"/>
-</p>
+Sistema web para gerenciamento de consultorias desenvolvido como projeto final da disciplina de Desenvolvimento de Software em Nuvem.
 
-## 📋 Visão Geral
+**Demo:** https://gz-company.vercel.app  
+**API:** https://gz-company.onrender.com  
+**Docs:** https://gz-company.onrender.com/api-docs
 
-O **GZ Company** é uma plataforma web escalável para gerenciamento de consultorias em tecnologia. O sistema permite que usuários solicitem consultorias, acompanhem projetos e gerenciem suas contas, enquanto administradores podem gerenciar todo o ciclo de vida das consultorias.
+## Sobre o projeto
 
-### Funcionalidades Principais
+A GZ Company é uma plataforma onde usuários podem solicitar consultorias em tecnologia. O sistema possui dois tipos de acesso: usuário comum (solicita consultorias e acompanha projetos) e administrador (gerencia consultorias, projetos e usuários).
 
-- ✅ **Autenticação e Autorização** - Sistema completo com múltiplos perfis (usuário/admin)
-- ✅ **Gerenciamento de Consultorias** - CRUD completo com status e histórico
-- ✅ **Sistema de Projetos** - Acompanhamento de projetos vinculados às consultorias
-- ✅ **Perfis de Usuário** - Gestão de dados pessoais e preferências
-- ✅ **Recuperação de Senha** - Fluxo completo via e-mail
-- ✅ **Sistema de Roles e Permissões** - Controle granular de acesso
+### O que o sistema faz
 
----
+- Cadastro e login com autenticação JWT
+- Solicitação de consultorias com acompanhamento de status
+- Gerenciamento de projetos vinculados às consultorias
+- Recuperação de senha por email
+- Painel administrativo para gestão completa
+- Sistema de permissões por cargo
 
-## 🏗️ Arquitetura do Sistema
+## Tecnologias
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         ARQUITETURA EM NUVEM                        │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│   ┌──────────────┐         ┌──────────────┐         ┌────────────┐ │
-│   │   Frontend   │  HTTP   │   Backend    │   SQL   │  Database  │ │
-│   │    (React)   │◄───────►│   (Express)  │◄───────►│ (Postgres) │ │
-│   │   Vercel/    │   API   │   Render/    │  Prisma │  Supabase/ │ │
-│   │   Netlify    │  REST   │   Railway    │   ORM   │    RDS     │ │
-│   └──────────────┘         └──────────────┘         └────────────┘ │
-│         │                         │                                  │
-│         │ Deploy                  │ Docker Container                │
-│         ▼                         ▼                                  │
-│   ┌──────────────────────────────────────────────────────────────┐ │
-│   │                    GitHub Actions CI/CD                       │ │
-│   │   Build → Test → Docker Build → Deploy                        │ │
-│   └──────────────────────────────────────────────────────────────┘ │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
-```
+**Frontend:** React 19, Vite, React Router, Axios  
+**Backend:** Node.js, Express, Prisma ORM  
+**Banco:** PostgreSQL (Neon)  
+**Deploy:** Vercel (front), Render (back)  
+**Outros:** Docker, GitHub Actions, Swagger
 
----
-
-## 🛠️ Tecnologias Utilizadas
-
-### Frontend
-| Tecnologia | Versão | Descrição |
-|------------|--------|-----------|
-| React | 19.x | Framework UI |
-| Vite | 7.x | Build tool |
-| React Router | 7.x | Roteamento |
-| Axios | 1.x | Cliente HTTP |
-| Lucide React | - | Ícones |
-
-### Backend
-| Tecnologia | Versão | Descrição |
-|------------|--------|-----------|
-| Node.js | 20.x | Runtime |
-| Express | 5.x | Framework Web |
-| Prisma | 5.x | ORM |
-| JWT | 9.x | Autenticação |
-| Bcrypt | 6.x | Criptografia |
-| Nodemailer | 7.x | Envio de e-mails |
-
-### DevOps & Cloud
-| Tecnologia | Descrição |
-|------------|-----------|
-| Docker | Containerização do backend |
-| GitHub Actions | CI/CD Pipeline |
-| Vercel/Netlify | Deploy do frontend |
-| Render/Railway | Deploy do backend |
-| Supabase/PostgreSQL | Banco de dados gerenciado |
-
----
-
-## 📁 Estrutura do Projeto
+## Estrutura
 
 ```
-gz-company/
-├── .github/
-│   └── workflows/
-│       └── ci-cd.yml          # Pipeline CI/CD
 ├── backend/
-│   ├── Dockerfile             # Container do backend
-│   ├── .dockerignore
-│   ├── package.json
-│   ├── index.js               # Entry point
-│   ├── authCR/                # Autenticação
-│   │   ├── authController.js
-│   │   ├── authMiddleware.js
-│   │   └── authRoutes.js
-│   ├── consultoriaCR/         # Consultorias
-│   ├── FileCR/                # Upload de arquivos
-│   ├── ProjetoCR/             # Projetos
-│   ├── RolesCR/               # Roles e permissões
-│   ├── UsersCR/               # Usuários
-│   └── prisma/
-│       ├── schema.prisma      # Schema do banco
-│       └── migrations/        # Migrações
+│   ├── authCR/          # Login, registro, recuperar senha
+│   ├── consultoriaCR/   # CRUD de consultorias
+│   ├── ProjetoCR/       # CRUD de projetos
+│   ├── UsersCR/         # Gerenciamento de usuários
+│   ├── RolesCR/         # Cargos e permissões
+│   ├── prisma/          # Schema e migrations
+│   └── Dockerfile
+│
 ├── frontend/
-│   ├── package.json
-│   ├── vite.config.js
-│   ├── index.html
-│   ├── public/
-│   │   └── logo.png
 │   └── src/
-│       ├── App.jsx
-│       ├── main.jsx
-│       ├── components/        # Componentes reutilizáveis
-│       ├── pages/             # Páginas da aplicação
-│       ├── services/          # Serviços e API
-│       └── utils/             # Utilitários
-└── README.md
+│       ├── pages/       # Telas da aplicação
+│       ├── components/  # Componentes reutilizáveis
+│       └── services/    # Chamadas à API
+│
+└── .github/workflows/   # CI/CD
 ```
 
----
+## Rodando local
 
-## 🚀 Começando
-
-### Pré-requisitos
-
-- Node.js 20+
-- npm ou yarn
-- Docker (opcional, para containerização)
-- PostgreSQL ou conta no Supabase
-
-### Variáveis de Ambiente
-
-#### Backend (`.env`)
-```env
-DATABASE_URL="postgresql://user:password@localhost:5432/gzcompany"
-JWT_SECRET="sua-chave-secreta-jwt"
-EMAIL_HOST="smtp.gmail.com"
-EMAIL_PORT=587
-EMAIL_USER="seu-email@gmail.com"
-EMAIL_PASSWORD="sua-senha-app"
-EMAIL_FROM_NAME="GZ Company"
-PORT=3000
-```
-
-#### Frontend (`.env`)
-```env
-VITE_API_URL=http://localhost:3000
-```
-
-### Instalação Local
+Precisa ter Node.js 20+ e um banco PostgreSQL.
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/gz-company.git
+# Clonar
+git clone https://github.com/Morpheusmmt/gz-company.git
 cd gz-company
 
 # Backend
 cd backend
+cp .env.example .env
+# editar .env com suas credenciais
 npm install
 npx prisma migrate dev
 npm run dev
 
-# Frontend (em outro terminal)
+# Frontend (outro terminal)
 cd frontend
 npm install
 npm run dev
 ```
 
-### Usando Docker
+Acesse http://localhost:5173
 
-```bash
-# Build do container do backend
-cd backend
-docker build -t gz-company-backend .
+## Variáveis de ambiente
 
-# Executar o container
-docker run -p 3000:3000 --env-file .env gz-company-backend
+**Backend (.env):**
+```
+DATABASE_URL=postgresql://...
+JWT_SECRET=chave_secreta
+EMAIL_USER=email@gmail.com
+EMAIL_PASSWORD=senha_app
+FRONTEND_URL=http://localhost:5173
 ```
 
----
-
-## 📚 API REST
-
-A API segue os princípios RESTful. Documentação completa disponível via Swagger (quando configurado).
-
-### Endpoints Principais
-
-#### Autenticação
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| POST | `/auth/register` | Criar conta |
-| POST | `/auth/login` | Fazer login |
-| POST | `/auth/recuperar-senha` | Solicitar recuperação |
-| POST | `/auth/verificar-codigo` | Verificar código |
-| POST | `/auth/redefinir-senha` | Redefinir senha |
-
-#### Consultorias
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/consultorias` | Listar consultorias |
-| POST | `/consultorias` | Criar consultoria |
-| GET | `/consultorias/:id` | Buscar por ID |
-| PUT | `/consultorias/:id` | Atualizar |
-| DELETE | `/consultorias/:id` | Excluir |
-
-#### Projetos
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/projetos` | Listar projetos |
-| POST | `/projetos` | Criar projeto |
-| PUT | `/projetos/:id` | Atualizar |
-
-#### Usuários
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/usuarios` | Listar usuários |
-| GET | `/usuarios/:id` | Buscar por ID |
-| PUT | `/usuarios/:id` | Atualizar |
-
----
-
-## 🔐 Segurança
-
-- ✅ Senhas criptografadas com bcrypt
-- ✅ Autenticação via JWT
-- ✅ Rotas protegidas com middleware
-- ✅ Validação de dados no backend
-- ✅ Variáveis de ambiente para credenciais
-- ✅ Tratamento adequado de erros
-- ✅ CORS configurado
-
----
-
-## 🔄 CI/CD Pipeline
-
-O projeto utiliza GitHub Actions para automação:
-
-```yaml
-Pipeline:
-  1. Build - Compilação do código
-  2. Lint - Verificação de padrões
-  3. Test - Execução de testes
-  4. Docker Build - Build da imagem
-  5. Deploy - Deploy automático
+**Frontend (.env):**
+```
+VITE_API_URL=http://localhost:3000
 ```
 
-### Execução
+## Endpoints da API
 
-- **Push em `main`**: Pipeline completo com deploy
-- **Push em `develop`**: Build e testes
-- **Pull Request**: Validação antes do merge
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | /auth/register | Criar conta |
+| POST | /auth/login | Login |
+| GET | /consultorias | Listar consultorias |
+| POST | /consultorias | Nova consultoria |
+| GET | /projetos | Listar projetos |
+| GET | /usuarios | Listar usuários |
 
----
+Documentação completa em `/api-docs`
 
-## � Conformidade com Atividade Final - ADS/IA
+## Deploy
 
-Este projeto atende a todos os requisitos da **Atividade Final de Desenvolvimento de Software em Nuvem**:
+O frontend está no Vercel e o backend no Render. O banco é PostgreSQL hospedado no Neon.
 
-### ✅ Requisitos Atendidos
+Para fazer deploy próprio:
 
-| Requisito | Implementação |
-|-----------|---------------|
-| **4.1 Aplicação Web** | Sistema de gerenciamento de consultorias com múltiplos perfis |
-| **4.2 Autenticação/Autorização** | JWT + Middleware + Sistema de Roles |
-| **4.2 API RESTful documentada** | Swagger/OpenAPI disponível em `/api-docs` |
-| **4.2 CRUD completo** | Consultorias, Projetos, Usuários, Roles |
-| **4.2 Validação no back-end** | Módulos validators.js e validation.js |
-| **4.2 Registro de logs** | Sistema de logging em `utils/logger.js` |
-| **4.3 Frontend moderno** | React 19 + Vite |
-| **4.3 Backend containerizado** | Dockerfile configurado |
-| **5. Docker** | Dockerfile + .dockerignore |
-| **5. CI/CD Pipeline** | GitHub Actions (Build → Test → Deploy) |
-| **6. Variáveis de ambiente** | .env.example para backend e frontend |
-| **6. Rotas protegidas** | authMiddleware.js |
-| **6. Tratamento de erros** | errorHandler.js |
-| **6. Separação dev/prod** | config/environment.js |
-| **7. Testes automatizados** | tests/api.test.js (Backend) |
-| **9.1 README detalhado** | Este documento |
+1. Fork o repositório
+2. Crie contas no Vercel, Render e Neon
+3. Configure as variáveis de ambiente em cada serviço
+4. Conecte os repositórios
 
-### 📁 Estrutura de Entregáveis
+## Equipe
 
-```
-✅ Código-fonte organizado
-✅ Dockerfile funcional
-✅ Arquivos de configuração (.env.example)
-✅ README.md detalhado
-✅ Pipeline CI/CD configurado
-✅ Documentação Swagger
-```
+Projeto desenvolvido pelo grupo Guerreiros Saiyajin para a disciplina de Desenvolvimento de Software em Nuvem - Unifor.
 
----
+## Licença
 
-## �📦 Deploy em Nuvem
-
-### Frontend (Vercel)
-1. Conecte o repositório ao Vercel
-2. Configure o diretório raiz como `frontend`
-3. Build command: `npm run build`
-4. Output directory: `dist`
-
-### Backend (Render)
-1. Conecte o repositório ao Render
-2. Configure como Web Service
-3. Dockerfile path: `backend/Dockerfile`
-4. Configure variáveis de ambiente
-
-### Banco de Dados (Supabase)
-1. Crie um projeto no Supabase
-2. Copie a connection string
-3. Configure no `DATABASE_URL`
-
----
-
-## 🧪 Testes
-
-```bash
-# Backend
-cd backend
-npm test
-
-# Frontend
-cd frontend
-npm test
-```
-
----
-
-## 👥 Equipe
-
-| Papel | Responsabilidades |
-|-------|-------------------|
-| Arquiteto de Software | Desenho da arquitetura em nuvem |
-| Desenvolvedor Backend | API REST, autenticação, banco de dados |
-| Desenvolvedor Frontend | Interface do usuário, integração API |
-| DevOps Engineer | Docker, CI/CD, deploy |
-| QA | Testes e qualidade |
-
----
-
-## 📄 Licença
-
-Este projeto foi desenvolvido para fins acadêmicos como parte da atividade final do curso de ADS/IA (EAD - Unifor).
-
----
-
-## 📞 Contato
-
-**GZ Company** - Soluções em Tecnologia
-
-- 📧 Email: contato@gzcompany.com
-- 🌐 Website: [gzcompany.com](https://gzcompany.com)
-
----
-
-<p align="center">
-  <strong>GZ Company</strong> - Transformando ideias em soluções tecnológicas 🚀
-</p>
+Projeto acadêmico.
