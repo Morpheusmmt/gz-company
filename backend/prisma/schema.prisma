@@ -1,0 +1,168 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String          @id @default(cuid())
+  nome           String
+  usuario        String          @unique
+  email          String          @unique
+  senha          String
+  criadoEm       DateTime        @default(now()) @map("criado_em")
+  alteradoEm     DateTime        @updatedAt @map("alterado_em")
+  status         Boolean         @default(true)
+  consultorias   Consultoria[]
+  passwordResets PasswordReset[]
+  userRoles      UserRole[]
+  files          File[]
+  projetosCriados Projeto[] @relation("ProjetoCriador")
+  projetosResponsavel Projeto[] @relation("ProjetoResponsavel")
+  projetosParticipando ProjetoParticipante[] @relation("usuarioParticipante")
+
+  @@index([email])
+  @@index([usuario])
+  @@index([status])
+  @@map("usuarios")
+}
+
+model Role {
+  id        Int        @id @default(autoincrement())
+  nome      String     @unique
+  description String   @default("")
+  
+  permissions String[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  
+  userRoles   UserRole[]
+
+  @@map("roles")
+}
+
+model UserRole {
+  id       Int      @id @default(autoincrement())
+  userId   String
+  roleId   Int
+  criadoEm DateTime @default(now()) @map("criado_em")
+  role     Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roleId])
+  @@map("usuarioxrole")
+}
+
+model PasswordReset {
+  id             String   @id @default(cuid())
+  email          String
+  senhaAleatoria String   @map("senha_aleatoria")
+  dataExpiracao  DateTime @map("data_expiracao")
+  utilizado      Boolean  @default(false)
+  criadoEm       DateTime @default(now()) @map("criado_em")
+  userId         String   @map("user_id")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([email])
+  @@index([senhaAleatoria])
+  @@index([dataExpiracao])
+  @@map("recuperacao_senha")
+}
+
+model Consultoria {
+  id              String    @id @default(cuid())
+  nome            String
+  email           String
+  telefone        String
+  empresa         String
+  descricao       String
+  consentimento   Boolean   @default(true)
+  status          String    @default("pendente")
+  criadoEm        DateTime  @default(now()) @map("criado_em")
+  alteradoEm      DateTime  @updatedAt @map("alterado_em")
+  observacoes     String?
+  dataAtendimento DateTime? @map("data_atendimento")
+  responsavelId   String?   @map("responsavel_id")
+  responsavel     User?     @relation(fields: [responsavelId], references: [id])
+  arquivos        File[]    @relation("ConsultoriaArquivos")
+
+  @@index([email])
+  @@index([status])
+  @@index([criadoEm])
+  @@map("consultorias")
+}
+
+model File {
+  id           String   @id @default(cuid())
+  file         String
+  nomeOriginal String?  @map("nome_original")
+  format       String
+  tamanho      Int?     @default(0)
+  descricao    String?
+  tipo         String   @default("geral") 
+  userId       String   @map("user_id")
+  projetoId    String?  @map("projeto_id")
+  consultoriaId String? @map("consultoria_id")
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  alteradoEm   DateTime @updatedAt @map("alterado_em")
+  
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projeto      Projeto? @relation("ProjetoArquivos", fields: [projetoId], references: [id], onDelete: Cascade)
+  consultoria  Consultoria? @relation("ConsultoriaArquivos", fields: [consultoriaId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([projetoId])
+  @@index([consultoriaId])
+  @@index([tipo])
+  @@index([criadoEm])
+  @@map("arquivos")
+}
+
+model Projeto {
+  id              String   @id @default(cuid())
+  titulo          String
+  descricao       String
+  status          String   @default("em_andamento")
+  aprovado        Boolean  @default(false)
+  dataInicio      DateTime? @map("data_inicio")
+  dataFim         DateTime? @map("data_fim")
+  responsavelId   String?  @map("responsavel_id")
+  etapa           String   @default("planejamento")
+  resultados      String?  @map("resultados")
+  criadoEm        DateTime @default(now()) @map("criado_em")
+  alteradoEm      DateTime @updatedAt @map("alterado_em")
+  criadorId       String   @map("criador_id")
+  
+  criador         User     @relation("ProjetoCriador", fields: [criadorId], references: [id], onDelete: Cascade)
+  responsavel     User?    @relation("ProjetoResponsavel", fields: [responsavelId], references: [id], onDelete: SetNull)
+  arquivos        File[]   @relation("ProjetoArquivos")
+  participantes   ProjetoParticipante[]
+
+  @@index([criadorId])
+  @@index([responsavelId])
+  @@index([status])
+  @@index([aprovado])
+  @@index([etapa])
+  @@index([criadoEm])
+  @@map("projetos")
+}
+
+model ProjetoParticipante {
+  id        String   @id @default(cuid())
+  projetoId String   @map("projeto_id")
+  usuarioId String   @map("usuario_id")
+  funcao    String   @default("pesquisador")
+  adicionadoEm DateTime @default(now()) @map("adicionado_em")
+
+  projeto   Projeto  @relation(fields: [projetoId], references: [id], onDelete: Cascade)
+  usuario   User     @relation("usuarioParticipante", fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@unique([projetoId, usuarioId])
+  @@index([projetoId])
+  @@index([usuarioId])
+  @@map("projeto_participantes")
+}

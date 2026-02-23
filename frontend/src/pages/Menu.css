@@ -1,0 +1,140 @@
+
+
+.menu-container {
+  min-height: 100vh;
+  background: var(--cor-gradiente-fundo);
+  padding: 40px 20px;
+}
+
+.menu-header {
+  text-align: center;
+  color: var(--cor-texto-principal);
+  margin-bottom: 50px;
+}
+
+.menu-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.menu-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.menu-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.menu-card {
+  background: var(--cor-fundo-card);
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.menu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.menu-card svg {
+  color: var(--cor-icones);
+  margin-bottom: 20px;
+}
+
+.menu-card h3 {
+  color: var(--cor-texto-principal);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.menu-card p {
+  color: var(--cor-texto-secundario);
+  font-size: 0.95rem;
+}
+
+.user-info {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--cor-fundo-card);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3d3d5c;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-details svg {
+  color: var(--cor-destaque);
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--cor-texto-principal);
+  margin-bottom: 5px;
+}
+
+.user-email {
+  color: var(--cor-texto-secundario);
+  font-size: 0.9rem;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+}
+
+@media (max-width: 768px) {
+  .menu-header h1 {
+    font-size: 2rem;
+  }
+
+  .menu-card h3 {
+    color: var(--cor-texto-principal);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .menu-card p {
+    color: var(--cor-texto-secundario);
+    font-size: 0.95rem;
+  }
+
+  .logout-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

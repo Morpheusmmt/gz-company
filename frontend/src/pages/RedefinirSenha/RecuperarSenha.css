@@ -1,0 +1,28 @@
+
+.back-button {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: none;
+          border: none;
+          color: var(--cor-link);
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          padding: 8px 0;
+          margin-bottom: 20px;
+          transition: all 0.2s;
+        }
+
+        .back-button:hover {
+          color: var(--cor-destaque);
+          transform: translateX(-4px);
+        }
+
+        .back-button svg {
+          transition: transform 0.2s;
+        }
+
+        .back-button:hover svg {
+          transform: translateX(-2px);
+        }

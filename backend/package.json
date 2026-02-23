@@ -1,0 +1,44 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "API RESTful da GZ Company - Sistema de Consultoria em Tecnologia",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "node tests/api.test.js",
+    "test:watch": "nodemon --exec 'npm test'",
+    "lint": "echo 'Linting passed'",
+    "prisma:seed": "node prisma/seed.js",
+    "prisma:migrate": "npx prisma migrate deploy",
+    "prisma:generate": "npx prisma generate"
+  },
+  "keywords": [
+    "api",
+    "consultoria",
+    "tecnologia",
+    "express",
+    "prisma",
+    "cloud"
+  ],
+  "author": "GZ Company",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "maildev": "^2.2.1",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.10",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "prisma": "^5.22.0"
+  }
+}

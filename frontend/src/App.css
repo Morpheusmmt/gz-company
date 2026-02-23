@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+    /* Paleta GZ Company - Tema Escuro */
+    --cor-gradiente-fundo: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --cor-fundo-card: #1f1f38;
+    --cor-fundo-secundario: #252545;
+    --cor-borda-input: #3d3d5c;
+    --cor-destaque: #D4A574; 
+    --cor-destaque-hover: #E8C4A0; 
+    --cor-destaque-foco-sombra: rgba(212, 165, 116, 0.25);
+    --cor-texto-principal: #F5F5F5; 
+    --cor-texto-secundario: #B8B8D1; 
+    --cor-label: #E0E0E0;
+    --cor-link: #D4A574; 
+    --cor-icones: #D4A574;
+    --cor-erro-fundo: #3D1F1F;
+    --cor-erro-borda: #7A3333;
+    --cor-erro-texto: #FF6B6B;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #1a1a2e;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
