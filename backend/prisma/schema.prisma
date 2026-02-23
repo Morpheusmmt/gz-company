@@ -155,7 +155,7 @@ model ProjetoParticipante {
   id        String   @id @default(cuid())
   projetoId String   @map("projeto_id")
   usuarioId String   @map("usuario_id")
-  funcao    String   @default("pesquisador")
+  funcao    String   @default("desenvolvedor")
   adicionadoEm DateTime @default(now()) @map("adicionado_em")
 
   projeto   Projeto  @relation(fields: [projetoId], references: [id], onDelete: Cascade)

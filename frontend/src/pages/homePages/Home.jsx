@@ -29,7 +29,7 @@ function Home() {
           </p>
           <div className="hero-ctas">
             <button className="btn-primary" onClick={() => navigate("/login")}>
-              Solicitar Consultoria
+              Solicitar Orçamento
               <ChevronRight size={20} />
             </button>
 
@@ -267,7 +267,7 @@ function Home() {
           <h2>Transforme Seu Projeto com Tecnologia</h2>
           <p>Descubra como as soluções inovadoras da GZ Company podem elevar a performance e eficiência de sua empresa</p>
           <button className="btn-primary" onClick={() => navigate("/login")}>
-            Solicitar Consultoria
+            Solicitar Orçamento
             <ChevronRight size={20} />
           </button>
         </div>

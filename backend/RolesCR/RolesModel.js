@@ -20,16 +20,15 @@ role = {
 
 role = {
 
-    nome: "PESQUISADOR",
-    descrição: "Gerenciador de projetos e consultorias", 
+    nome: "DESENVOLVEDOR",
+    descrição: "Gerenciador de projetos e serviços", 
     permissões: [
         
-        "projects:create",        // Criar novos projetos de P&D
+        "projects:create",        // Criar novos projetos
         "projects:edit",          // Editar projetos
         "projects:view_own",      // Ver projetos atribuídos
-        "experiments:record",     // Registrar resultados experimentais
-        "consultations:update",   // Atualizar status de consultorias
-        "consultations:view",     // Ver consultorias atribuídas
+        "consultations:update",   // Atualizar status de serviços
+        "consultations:view",     // Ver serviços atribuídos
         "files:upload",           // Fazer upload de documentos
         "reports:export"          // Exportar relatórios técnicos
 ],

@@ -1,21 +1,21 @@
 :root {
-  /* Paleta de cores GZ Company - Tema Escuro */
-  --cor-gradiente-fundo: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  --cor-fundo-card: #1f1f38;
-  --cor-fundo-secundario: #252545;
-  --cor-borda-input: #3d3d5c;
-  --cor-destaque: #D4A574; 
-  --cor-destaque-hover: #E8C4A0; 
-  --cor-destaque-dark: #B8956A;
-  --cor-destaque-foco-sombra: rgba(212, 165, 116, 0.25);
-  --cor-texto-principal: #F5F5F5;
-  --cor-texto-secundario: #B8B8D1; 
-  --cor-label: #E0E0E0; 
-  --cor-link: #D4A574; 
-  --cor-icones: #D4A574;
-  --cor-icones-hover: #E8C4A0;
-  --cor-accent: #D4A574;
-  --cor-light: #252545;
+  /* Paleta de cores GZ Company - Tech Minimalista */
+  --cor-gradiente-fundo: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  --cor-fundo-card: #111111;
+  --cor-fundo-secundario: #1a1a1a;
+  --cor-borda-input: #333333;
+  --cor-destaque: #ffffff; 
+  --cor-destaque-hover: #e5e5e5; 
+  --cor-destaque-dark: #cccccc;
+  --cor-destaque-foco-sombra: rgba(255, 255, 255, 0.1);
+  --cor-texto-principal: #ffffff;
+  --cor-texto-secundario: #888888; 
+  --cor-label: #cccccc; 
+  --cor-link: #ffffff; 
+  --cor-icones: #ffffff;
+  --cor-icones-hover: #888888;
+  --cor-accent: #3b82f6;
+  --cor-light: #1a1a1a;
 }
 
 .home-wrapper {
@@ -49,7 +49,7 @@ section {
   right: 0;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -118,26 +118,27 @@ section {
 }
 
 .btn-primary {
-  background: var(--cor-destaque);
-  color: white;
-  box-shadow: 0 4px 20px rgba(196, 149, 106, 0.3);
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
 .btn-primary:hover {
-  background: var(--cor-destaque-hover);
+  background: #e5e5e5;
   transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(196, 149, 106, 0.4);
+  box-shadow: 0 6px 30px rgba(255, 255, 255, 0.15);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--cor-destaque);
-  border: 2px solid var(--cor-destaque);
+  color: #ffffff;
+  border: 1px solid #333333;
 }
 
 .btn-secondary:hover {
-  background: var(--cor-destaque);
-  color: white;
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #ffffff;
   transform: translateY(-2px);
 }
 
@@ -154,7 +155,7 @@ section {
   position: absolute;
   width: 120%;
   height: 120%;
-  background: linear-gradient(135deg, rgba(196, 149, 106, 0.08) 0%, rgba(212, 165, 116, 0.12) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
   border-radius: 30px;
   transform: rotate(-5deg);
   z-index: 0;

@@ -3,9 +3,9 @@
   'roles:manage', 'projects:view_all', 'consultations:view_all',
   'reports:generate', 'system:config',
   
-  // Pesquisador
+  // Desenvolvedor
   'projects:create', 'projects:edit', 'projects:view_own',
-  'experiments:record', 'consultations:update', 'consultations:view',
+  'consultations:update', 'consultations:view',
   'files:upload', 'reports:export',
   
   // Cliente
@@ -25,11 +25,11 @@ const roles = [
   },
   {
     id: 2,
-    nome: "PESQUISADOR",
-    descricao: "Gerenciador de projetos e consultorias",
+    nome: "DESENVOLVEDOR",
+    descricao: "Gerenciador de projetos e serviços",
     permissoes: [
       "projects:create", "projects:edit", "projects:view_own",
-      "experiments:record", "consultations:update", "consultations:view",
+      "consultations:update", "consultations:view",
       "files:upload", "reports:export"
     ],
     ativo: true

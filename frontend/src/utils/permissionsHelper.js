@@ -13,9 +13,9 @@ export const hasPermission = (user, permission) => {
       "system:config", "experiments:record",
       "files:upload", "profile:edit"
     ],
-    2: [ // Pesquisador
+    2: [ // Desenvolvedor
       "projects:create", "projects:edit", "projects:view_own",
-      "experiments:record", "consultations:update", "consultations:view",
+      "consultations:update", "consultations:view",
       "files:upload", "reports:export", "profile:edit"
     ],
     3: [ // Cliente
@@ -62,7 +62,7 @@ export const getUserRoleName = (user) => {
 
   const roleNames = {
     1: "Administrador",
-    2: "Pesquisador",
+    2: "Desenvolvedor",
     3: "Cliente"
   };
 
