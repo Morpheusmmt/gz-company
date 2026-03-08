@@ -66,7 +66,7 @@ api.auth = {
       const payload = this.decodeToken(token);
       const now = Date.now() / 1000;
       return payload.exp > now;
-    } catch (error) {
+    } catch {
       return false;
     }
   },
@@ -83,7 +83,7 @@ api.auth = {
           .join('')
       );
       return JSON.parse(jsonPayload);
-    } catch (error) {
+    } catch {
       throw new Error('Token inválido');
     }
   },
@@ -99,16 +99,6 @@ api.auth = {
       }
     }
     return null;
-  },
-
-  logout: () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.location.href = '/';
-  },
-
-  isAuthenticated: () => {
-    return !!localStorage.getItem('token');
   }
 };
 

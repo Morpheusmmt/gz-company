@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Search, ChevronDown, Edit2, Clock, AlertCircle, ArrowLeft, CheckCircle, Zap, X as XIcon, FileText, Calendar, Download, Paperclip } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
-import { hasPermission } from "../../utils/permissionsHelper";
 import "./ConsultoriasList.css";
 import VincularResponsavelModal from "./VincularResponsavelModal";
 import MudarStatusModal from "./MudarStatusModal";
@@ -28,7 +27,6 @@ export default function ConsultoriasList({ userOnly = false }) {
   const [loadingArquivos, setLoadingArquivos] = useState({});
 
   const currentUser = api.auth.getCurrentUser();
-  const canManageConsultorias = hasPermission(currentUser, "consultations:update");
 
   useEffect(() => {
     fetchConsultorias();

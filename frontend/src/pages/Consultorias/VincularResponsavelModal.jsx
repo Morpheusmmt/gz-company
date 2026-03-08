@@ -37,10 +37,6 @@ export default function VincularResponsavelModal({
     }
   };
 
-  const handleRemoverResponsavel = async () => {
-    await onVincular(null);
-  };
-
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>

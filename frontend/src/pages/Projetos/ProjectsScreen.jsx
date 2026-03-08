@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
-import { hasPermission, isAdmin as checkIsAdmin } from "../../utils/permissionsHelper";
+import { isAdmin as checkIsAdmin } from "../../utils/permissionsHelper";
 import "./ProjectsScreen.css";
 
 export default function ProjectsScreen() {
@@ -36,7 +36,7 @@ export default function ProjectsScreen() {
   const [etapaFilter, setEtapaFilter] = useState("");
   const [aprovadoFilter, setAprovadoFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, _setItemsPerPage] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
   const [showStatusDropdown, setShowStatusDropdown] = useState(false);
   const [showEtapaDropdown, setShowEtapaDropdown] = useState(false);
@@ -951,7 +951,7 @@ function DetalhesProjetoModal({ projeto, isAdmin, currentUserId, onClose, onUplo
       link.click();
       link.remove();
       window.URL.revokeObjectURL(url);
-    } catch (error) {
+    } catch {
       showError("Erro ao baixar arquivo");
     } finally {
       setLoadingDownload(null);

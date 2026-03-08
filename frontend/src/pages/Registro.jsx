@@ -44,7 +44,7 @@ export default function Registro() {
     setLoading(true);
 
     try {
-      const { confirmarSenha, ...dadosRegistro } = formData;
+      const { confirmarSenha: _confirmarSenha, ...dadosRegistro } = formData;
       
       const response = await api.post('/api/register', dadosRegistro); 
       console.log('Cadastro bem-sucedido:', response);
