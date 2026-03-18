@@ -49,7 +49,7 @@ api.auth = {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     delete api.defaults.headers.common["Authorization"];
-    window.location.href = '/login';
+    window.location.href = '/';
   },
 
   // Pega o token atual

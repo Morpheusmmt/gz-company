@@ -2,6 +2,25 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const { enviarNotificacoes, enviarNotificacaoMudancaStatus } = require('./emailService');
 
+const normalizeRoleName = (roleName = '') =>
+  roleName
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
+
+const getAccessProfile = (user) => {
+  const roleNames = (user?.roles || [])
+    .map((role) => (typeof role === 'object' ? role.nome : ''))
+    .map((name) => normalizeRoleName(name));
+
+  const isAdmin = roleNames.some((name) => name.includes('admin'));
+  const isDev = roleNames.some((name) => name.includes('desenvolvedor') || name.includes('pesquisador'));
+  const isCliente = roleNames.some((name) => name.includes('cliente'));
+
+  return { isAdmin, isDev, isCliente };
+};
+
 const criarConsultoria = async (req, res, next) => {
   try {
     const { nome, email, telefone, empresa, descricao, consentimento } = req.body;
@@ -91,6 +110,7 @@ const criarConsultoria = async (req, res, next) => {
 const listarConsultorias = async (req, res, next) => {
   try {
     const { page = 1, limit = 10, status, email, empresa, responsavelId } = req.query;
+    const { isAdmin, isDev, isCliente } = getAccessProfile(req.user);
     const skip = (Number(page) - 1) * Number(limit);
     const take = Number(limit);
 
@@ -99,6 +119,11 @@ const listarConsultorias = async (req, res, next) => {
     if (email) where.email = { contains: email, mode: 'insensitive' };
     if (empresa) where.empresa = { contains: empresa, mode: 'insensitive' };
     if (responsavelId) where.responsavelId = responsavelId;
+
+    // Cliente só pode visualizar as próprias solicitações
+    if (isCliente && !isAdmin && !isDev) {
+      where.email = req.user.email.toLowerCase();
+    }
 
     const [consultorias, total] = await Promise.all([
       prisma.consultoria.findMany({
@@ -137,6 +162,7 @@ const listarConsultorias = async (req, res, next) => {
 const buscarConsultoria = async (req, res, next) => {
   try {
     const { id } = req.params;
+    const { isAdmin, isDev, isCliente } = getAccessProfile(req.user);
 
     const consultoria = await prisma.consultoria.findUnique({
       where: { id },
@@ -158,6 +184,14 @@ const buscarConsultoria = async (req, res, next) => {
       });
     }
 
+    // Cliente só pode acessar consultorias do próprio e-mail
+    if (isCliente && !isAdmin && !isDev && consultoria.email !== req.user.email.toLowerCase()) {
+      return res.status(403).json({
+        success: false,
+        message: 'Você não tem permissão para acessar esta consultoria'
+      });
+    }
+
     res.status(200).json({
       success: true,
       data: consultoria
@@ -171,6 +205,14 @@ const atualizarStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
+    const { isAdmin, isDev, isCliente } = getAccessProfile(req.user);
+
+    if (isCliente && !isAdmin && !isDev) {
+      return res.status(403).json({
+        success: false,
+        message: 'Você não tem permissão para alterar status de consultorias'
+      });
+    }
 
     const statusValidos = ['pendente', 'em_atendimento', 'confirmada', 'concluida', 'cancelada'];
     if (!statusValidos.includes(status)) {
@@ -236,6 +278,14 @@ const atualizarConsultoria = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { observacoes, responsavelId, dataAtendimento, status } = req.body;
+    const { isAdmin, isDev, isCliente } = getAccessProfile(req.user);
+
+    if (isCliente && !isAdmin && !isDev) {
+      return res.status(403).json({
+        success: false,
+        message: 'Você não tem permissão para atualizar consultorias'
+      });
+    }
 
     const consultoriaExistente = await prisma.consultoria.findUnique({
       where: { id }
@@ -308,6 +358,14 @@ const atualizarConsultoria = async (req, res, next) => {
 const deletarConsultoria = async (req, res, next) => {
   try {
     const { id } = req.params;
+    const { isAdmin, isDev, isCliente } = getAccessProfile(req.user);
+
+    if (isCliente && !isAdmin && !isDev) {
+      return res.status(403).json({
+        success: false,
+        message: 'Você não tem permissão para cancelar consultorias'
+      });
+    }
 
     // Verificar se existe
     const consultoriaExistente = await prisma.consultoria.findUnique({
@@ -340,6 +398,7 @@ const deletarConsultoria = async (req, res, next) => {
 const listarArquivosConsultoria = async (req, res, next) => {
   try {
     const { id } = req.params;
+    const { isAdmin, isDev, isCliente } = getAccessProfile(req.user);
 
     // Verifica se a consultoria existe
     const consultoria = await prisma.consultoria.findUnique({
@@ -350,6 +409,13 @@ const listarArquivosConsultoria = async (req, res, next) => {
       return res.status(404).json({
         success: false,
         message: 'Consultoria não encontrada'
+      });
+    }
+
+    if (isCliente && !isAdmin && !isDev && consultoria.email !== req.user.email.toLowerCase()) {
+      return res.status(403).json({
+        success: false,
+        message: 'Você não tem permissão para acessar arquivos desta consultoria'
       });
     }
 
@@ -378,6 +444,7 @@ const listarArquivosConsultoria = async (req, res, next) => {
 const downloadArquivoConsultoria = async (req, res, next) => {
   try {
     const { id, arquivoId } = req.params;
+    const { isAdmin, isDev, isCliente } = getAccessProfile(req.user);
 
     // Verifica se a consultoria existe
     const consultoria = await prisma.consultoria.findUnique({
@@ -388,6 +455,13 @@ const downloadArquivoConsultoria = async (req, res, next) => {
       return res.status(404).json({
         success: false,
         message: 'Consultoria não encontrada'
+      });
+    }
+
+    if (isCliente && !isAdmin && !isDev && consultoria.email !== req.user.email.toLowerCase()) {
+      return res.status(403).json({
+        success: false,
+        message: 'Você não tem permissão para baixar arquivos desta consultoria'
       });
     }
 

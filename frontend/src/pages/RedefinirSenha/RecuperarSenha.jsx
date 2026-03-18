@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import api from '../../services/api';
 import '../Login.css';
 import './RecuperarSenha.css';
 
@@ -15,45 +16,14 @@ export default function RecuperarSenha() {
     setError('');
     setLoading(true);
 
-    console.log('🚀 Iniciando requisição...', { email });
-
     try {
-      console.log('📤 Enviando request para:', 'http://localhost:3000/api/forgot-password');
-      
-      const response = await fetch('http://localhost:3000/api/forgot-password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      console.log('📥 Response recebida:', {
-        status: response.status,
-        ok: response.ok,
-        statusText: response.statusText
-      });
-
-      const data = await response.json();
-      console.log('📦 Data recebida:', data);
-
-      if (!response.ok) {
-        console.error('❌ Erro na resposta:', data.error);
-        throw new Error(data.error || 'Algo deu errado');
-      }
-
-      console.log('✅ Sucesso! Navegando para verificar-codigo...');
-      console.log('📧 Email sendo passado:', email);
-      
+      await api.post('/api/forgot-password', { email });
       navigate('/verificar-codigo', { state: { email } });
-      console.log('🎯 Navigate chamado!');
-      
+
     } catch (err) {
-      console.error('💥 ERRO CAPTURADO:', err);
-      console.error('Stack trace:', err.stack);
-      setError(err.message || 'Erro ao enviar código. Tente novamente.');
+      const message = err.response?.data?.error || err.message || 'Erro ao enviar código. Tente novamente.';
+      setError(message);
     } finally {
-      console.log('🏁 Finally executado, setLoading(false)');
       setLoading(false);
     }
   };
