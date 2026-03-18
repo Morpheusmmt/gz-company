@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+    /* Paleta GZ Company - Tech Minimalista */
+    --cor-gradiente-fundo: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+    --cor-fundo-card: #111111;
+    --cor-fundo-secundario: #1a1a1a;
+    --cor-borda-input: #333333;
+    --cor-destaque: #ffffff; 
+    --cor-destaque-hover: #e5e5e5; 
+    --cor-destaque-foco-sombra: rgba(255, 255, 255, 0.1);
+    --cor-texto-principal: #ffffff; 
+    --cor-texto-secundario: #888888; 
+    --cor-label: #cccccc;
+    --cor-link: #ffffff; 
+    --cor-icones: #ffffff;
+    --cor-erro-fundo: #1a0000;
+    --cor-erro-borda: #ff3333;
+    --cor-erro-texto: #ff6666;
+    --cor-sucesso: #00ff88;
+    --cor-accent: #3b82f6;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #000000;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}

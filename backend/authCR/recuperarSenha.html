@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperação de Senha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333333;
+    }
+    p {
+      font-size: 16px;
+      color: #555555;
+    }
+    .codigo {
+      display: inline-block;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #e0e0e0;
+      padding: 10px 20px;
+      border-radius: 6px;
+      margin: 20px 0;
+      letter-spacing: 2px;
+    }
+    .footer {
+      font-size: 12px;
+      color: #999999;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Olá, {{NOME_USUARIO}}</h1>
+    <p>Você solicitou a recuperação da sua senha. Utilize o código abaixo para redefinir sua senha. Esse código é válido por 1 hora.</p>
+    
+    <div class="codigo">{{CODIGO_RECUPERACAO}}</div>
+
+    <p>Se você não solicitou a recuperação de senha, ignore este e-mail.</p>
+
+    <div class="footer">
+      &copy; 2025 GZ Company. Todos os direitos reservados.
+    </div>
+  </div>
+</body>
+</html>
